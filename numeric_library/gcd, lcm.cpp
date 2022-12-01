@@ -18,6 +18,7 @@ void numericProperty()
 
 	/*
 	유클리드 호제법
+	기본적으로 a > b로 써야 함
 	int gcd(int a, int b)
 	{
 		int c;

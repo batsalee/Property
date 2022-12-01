@@ -12,9 +12,13 @@ void checkCharacter()
 
 	/*
 	isdigit 주의점
-	매개변수로 char을 넣어야 함
+	매개변수로 char을 넣어야 함, string이나 int는 안됨
 	char이 ['0'-'9']면 true고 아니면 false
-	int로 넣으면 안됨, '0'+int로 넣는 식이던가 해야할듯한데 그냥 char만 쓴다고 생각하기
+
+	string객체로 isdigit 사용법
+	if(isdigit(*part.c_str()))
+	c_str()을 하면 string to char*가 되고, c_str의 결과물은 char가 아니라 char*이므로
+	char포인터의 값을 빼오기 위해 *part.c_str()로 사용해 줌
 	*/
 	char c = '2';
 	if (isdigit(c)) std::cout << c << "는 숫자입니다" << std::endl;
@@ -38,10 +42,10 @@ void changeCharacter()
 	*/
 	char alpha = 'a';
 	std::cout << alpha << "는 소문자입니다." << std::endl;
-	
+
 	alpha = toupper(alpha);
 	std::cout << alpha << "는 대문자입니다." << std::endl;
-	
+
 	alpha = tolower(alpha);
 	std::cout << alpha << "는 소문자입니다." << std::endl;
 }
@@ -74,10 +78,57 @@ void changeString()
 
 	std::string str = "123abc12";
 	int num;
-	
+
 	if (str != "") {
 		num = stoi(str);
 	}
 
 	std::cout << num << std::endl;
+}
+
+void stringFind()
+{
+	/*
+	보이어-무어 알고리즘을 쓰면
+	문자열에서 그냥 find를 쓰는것보다 훠얼씬 빠르다고 함
+
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <string>
+
+int main() {
+	std::string s =
+	"I believe I can fly I believe I can fly I believe I can fly (woo)";
+
+	std::string needle = "believe";
+
+	auto it =
+		std::search(s.begin(), s.end(),
+				std::boyer_moore_searcher(needle.begin(), needle.end()));
+
+	if (it != s.end()) {
+		std::cout << needle << " found at " << std::distance(s.begin(), it)
+			  << std::endl;
+	} else {
+		std::cout << needle << " not found " << std::endl;
+	}
+}
+
+	*/
+
+	/*
+	문자나 문자열 모두 찾을 수 있음
+	*/
+	string str = "012abc!@#";
+	int index = str.find("abc");
+	if (index != string::npos) std::cout << "찾는 문자열이 존재합니다." << std::endl;
+}
+
+void stringErase()
+{
+	// 문자열에서 맨 앞의 연속된 0을 지우고 싶다면
+	s.remove_prefix(std::min(s.find_first_not_of("0"), s.size()));
+	// 맨 뒤는
+	s.remove_suffix(std::min(s.size() - s.find_last_not_of("0") - 1, s.size()));
 }
