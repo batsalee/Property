@@ -1,6 +1,5 @@
 #include <iostream>
 #include <numeric>
-#include "numericProperty.h"
 
 void numericProperty()
 {
