@@ -1,5 +1,4 @@
 #include <iostream>
-#include "stringProperty.h"
 
 void checkCharacter()
 {
@@ -69,6 +68,8 @@ void changeString()
 	stoll : string to long long
 	stoull : string to unsigned long long
 	stold : string to long double
+
+	atoi처럼 a시리즈는 char*를 사용할 때, stoi처럼 s시리즈는 string을 사용할 때
 	*/
 
 	std::string str = "123abc12";
