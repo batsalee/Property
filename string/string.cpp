@@ -129,6 +129,10 @@ void stringErase()
 {
 	// 문자열에서 맨 앞의 연속된 0을 지우고 싶다면
 	s.remove_prefix(std::min(s.find_first_not_of("0"), s.size()));
-	// 맨 뒤는
+	// 맨 뒤의 연속된 0을 지우고 싶다면
 	s.remove_suffix(std::min(s.size() - s.find_last_not_of("0") - 1, s.size()));
+
+
+	// vec내의 3을 모두 지우고 싶다면
+	vec.erase(remove(vec.begin(), vec.end(), 3), vec.end());
 }
