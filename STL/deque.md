@@ -39,8 +39,15 @@ vector는 사전에 할당한 공간이 꽉 찼을 경우 새로 큰 메모리�
 2) 메모리 조각들의 정보를 저장할 테이블이 필요하므로 일반적으로 메모리 공간을 더 사용하게 된다.
 
 
-# 4. deque의 멤버 변수들
-
+# 4. deque의 함수 원형
+template <class T, class Allocator = allocator<T> >
+class deque;
+- T : (보관하려는) 원소의 타입
+- Allocator : 많은 경우 생략함
+              어떠한 방식으로 메모리를 할당할지에 관련한 할당자(allocator) 타입을 나타낸다. 
+              기본값으로 T 의 할당자 클래스 템플릿을 사용하며, Heap 에 할당하게 된다.
+  
+# 5. deque의 멤버 변수들
 - reference : Allocator::reference
 - const_reference : Allocator::const_reference
 
@@ -61,7 +68,7 @@ vector는 사전에 할당한 공간이 꽉 찼을 경우 새로 큰 메모리�
 - const_pointer : 상수 포인터 (Allocator::const_pointer)
 
   
-# 5. deque의 멤버 함수들
+# 6. deque의 멤버 함수들
 1) 생성자 : 데크를 생성한다.
 2) 소멸자 : 데크를 소멸한다.
 3) 연산자
