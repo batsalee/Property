@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-int fib(int n) // Àç±Í¹æ½Ä
+int fib(int n) // ì¬ê·€ ë°©ì‹
 {	
 	if (n == 1 || n == 2) {
 		return 1;
@@ -9,7 +9,7 @@ int fib(int n) // Àç±Í¹æ½Ä
 	else return fib(n - 1) + fib(n - 2);
 }
 
-int fibonacci(int n) // µ¿Àû°èÈ¹¹ı
+int fibonacci(int n) // DP ë°©ì‹
 {
 	std::vector<int> f(n+1);
 	f[1] = f[2] = 1;
