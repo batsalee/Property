@@ -1,3 +1,8 @@
+/*
+먼저 VS와 MySQL간 연동이 필요하므로 해당 설정은 아래 글 따라하기
+https://smallpants.tistory.com/98
+*/
+
 #include <mysql.h>
 #include <iostream>
 
