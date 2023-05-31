@@ -4,21 +4,21 @@
 void numericProperty()
 {
 	/*
-	gcd, lcm »ç¿ë½Ã ÁÖÀÇ»çÇ×
-	c++ 17¹öÀü¿¡ numericÇì´õ¿¡ Ãß°¡µÈ °³³äÀÌ¹Ç·Î ÇÁ·ÎÁ§Æ® ¼Ó¼º -> ¾ğ¾î -> ¾ğ¾î¹öÀü 17ÀÌ»óÇØÁà¾ßÇÔ
+	gcd, lcm ì‚¬ìš©ì‹œ ì£¼ì˜ì‚¬í•­
+	c++ 17ë²„ì „ì— numericí—¤ë”ì— ì¶”ê°€ëœ ê°œë…ì´ë¯€ë¡œ í”„ë¡œì íŠ¸ ì†ì„± -> ì–¸ì–´ -> ì–¸ì–´ë²„ì „ 17ì´ìƒí•´ì¤˜ì•¼í•¨
 
-	GCD : ÃÖ´ë°ø¾à¼ö
-	LCM : ÃÖ¼Ò°ø¹è¼ö
-	ÃÖ¼Ò°ø¹è¼ö = a * b / ÃÖ´ë°ø¾à¼ö;
+	GCD : ìµœëŒ€ê³µì•½ìˆ˜
+	LCM : ìµœì†Œê³µë°°ìˆ˜
+	ìµœì†Œê³µë°°ìˆ˜ = a * b / ìµœëŒ€ê³µì•½ìˆ˜;
 	lcm(a, b) = a * b / gcd(a, b);
 	*/
 	int num1 = 35, num2 = 56;
-	std::cout << "num1°ú num2ÀÇ ÃÖ´ë°ø¾à¼ö : " << std::gcd(num1, num2) << std::endl;
-	std::cout << "num1°ú num2ÀÇ ÃÖ¼Ò°ø¹è¼ö : " << std::lcm(num1, num2) << std::endl;
+	std::cout << "num1ê³¼ num2ì˜ ìµœëŒ€ê³µì•½ìˆ˜ : " << std::gcd(num1, num2) << std::endl;
+	std::cout << "num1ê³¼ num2ì˜ ìµœì†Œê³µë°°ìˆ˜ : " << std::lcm(num1, num2) << std::endl;
 
 	/*
-	À¯Å¬¸®µå È£Á¦¹ı
-	±âº»ÀûÀ¸·Î a > b·Î ½á¾ß ÇÔ
+	ìœ í´ë¦¬ë“œ í˜¸ì œë²•
+	ê¸°ë³¸ì ìœ¼ë¡œ a > bë¡œ ì¨ì•¼ í•¨
 	int gcd(int a, int b)
 	{
 		int c;
@@ -28,6 +28,11 @@ void numericProperty()
 			b = c;
 		}
 		return a;
+	}
+	// recursion
+	int gcd(int a, int b){
+		if (b == 0) return a;
+		return gcd(b, a % b);
 	}
 
 	int lcm(int a, int b)
