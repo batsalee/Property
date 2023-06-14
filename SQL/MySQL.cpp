@@ -1,47 +1,52 @@
+/*
+ë¨¼ì € VSì™€ MySQLê°„ ì—°ë™ì´ í•„ìš”í•˜ë¯€ë¡œ í•´ë‹¹ ì„¤ì •ì€ ì•„ë˜ ê¸€ ë”°ë¼í•˜ê¸°
+https://smallpants.tistory.com/98
+*/
+
 #include <mysql.h>
 #include <iostream>
 
 int main()
 {
-	MYSQL Conn;				// MySQL Á¤º¸¸¦ ´ãÀ» ±¸Á¶Ã¼
-	MYSQL* ConnPtr = NULL;	// MySQL ÇÚµé
-	MYSQL_RES* Result;		// Äõ¸®¼º°ø½Ã °á°ú¸¦ ´ã´Â ±¸Á¶Ã¼ Æ÷ÀÎÅÍ
-	MYSQL_ROW Row;			// Äõ¸®¼º°ø½Ã °á°ú·Î ³ª¿Â ÇàÀÇ Á¤º¸¸¦ ´ã´Â ±¸Á¶Ã¼
-	int Stat;				// Äõ¸®¿äÃ» ÈÄ °á°ú(¼º°ø, ½ÇÆĞ)
+	MYSQL Conn;			// MySQL ì •ë³´ë¥¼ ë‹´ì„ êµ¬ì¡°ì²´
+	MYSQL* ConnPtr = NULL;		// MySQL í•¸ë“¤
+	MYSQL_RES* Result;		// ì¿¼ë¦¬ì„±ê³µì‹œ ê²°ê³¼ë¥¼ ë‹´ëŠ” êµ¬ì¡°ì²´ í¬ì¸í„°
+	MYSQL_ROW Row;			// ì¿¼ë¦¬ì„±ê³µì‹œ ê²°ê³¼ë¡œ ë‚˜ì˜¨ í–‰ì˜ ì •ë³´ë¥¼ ë‹´ëŠ” êµ¬ì¡°ì²´
+	int Stat;			// ì¿¼ë¦¬ìš”ì²­ í›„ ê²°ê³¼(ì„±ê³µ, ì‹¤íŒ¨)
 
-	mysql_init(&Conn);		// MySQL Á¤º¸ ÃÊ±âÈ­
+	mysql_init(&Conn);		// MySQL ì •ë³´ ì´ˆê¸°í™”
 
-	// µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°á
-	ConnPtr = mysql_real_connect(&Conn, "µ¥ÀÌÅÍº£ÀÌ½º¼­¹öÁÖ¼Ò", "root", "ºñ¹Ğ¹øÈ£", "Á¢¼ÓÇÒµ¥ÀÌÅÍº£ÀÌ½º", 3306, (char*)NULL, 0);
+	// ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°
+	ConnPtr = mysql_real_connect(&Conn, "ë°ì´í„°ë² ì´ìŠ¤ì„œë²„ì£¼ì†Œ", "root", "ë¹„ë°€ë²ˆí˜¸", "ì ‘ì†í• ë°ì´í„°ë² ì´ìŠ¤", 3306, (char*)NULL, 0);
 
-	if (ConnPtr == NULL)	// ¿¬°á °á°ú È®ÀÎ, NULLÀÏ °æ¿ì ¿¬°á ½ÇÆĞÇÑ °Í
+	if (ConnPtr == NULL)		// ì—°ê²° ê²°ê³¼ í™•ì¸, NULLì¼ ê²½ìš° ì—°ê²° ì‹¤íŒ¨í•œ ê²ƒ
 	{
 		fprintf(stderr, "MySQL connection error : %s\n", mysql_error(&Conn));
 		return 1;
 	}
 
-	// µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÇÑ±ÛÀÌ ÀÖ´Ù¸é ¾Æ·¡ 3ÁÙ Ãß°¡
-	// MySQL¿¡¼­ »ç¿ëÇÏ´Â ¹®ÀÚ¼ÂÀ» VS°¡ »ç¿ëÇÏ´Â ¹®ÀÚ¼ÂÀÎ euc-kr·Î º¯°æÇØÁÖ´Â ±â´É
+	// ë°ì´í„°ë² ì´ìŠ¤ì— í•œê¸€ì´ ìˆë‹¤ë©´ ì•„ë˜ 3ì¤„ ì¶”ê°€
+	// MySQLì—ì„œ ì‚¬ìš©í•˜ëŠ” ë¬¸ìì…‹ì„ VSê°€ ì‚¬ìš©í•˜ëŠ” ë¬¸ìì…‹ì¸ euc-krë¡œ ë³€ê²½í•´ì£¼ëŠ” ê¸°ëŠ¥
 	mysql_query(ConnPtr, "set session character_set_connection=euckr;");
 	mysql_query(ConnPtr, "set session character_set_results=euckr;");
 	mysql_query(ConnPtr, "set session character_set_client=euckr;");
 
-	char* Query = (char*)"SELECT * FROM people";	// ¼¼¹ÌÄİ·ĞÀ» Á¦¿ÜÇÑ Äõ¸®¹® ÀÛ¼º
-	Stat = mysql_query(ConnPtr, Query);				// Äõ¸® ¿äÃ» ¹× ¼º°ø¿©ºÎ ¹Ş¾Æ¿À±â
+	char* Query = (char*)"SELECT * FROM people";	// ì„¸ë¯¸ì½œë¡ ì„ ì œì™¸í•œ ì¿¼ë¦¬ë¬¸ ì‘ì„±
+	Stat = mysql_query(ConnPtr, Query);		// ì¿¼ë¦¬ ìš”ì²­ ë° ì„±ê³µì—¬ë¶€ ë°›ì•„ì˜¤ê¸°
 	if (Stat != 0)
 	{
 		fprintf(stderr, "MySQL query error : %s\n", mysql_error(&Conn));
 		return 1;
 	}
 
-	Result = mysql_store_result(ConnPtr);			// °á°ú È®ÀÎÇÏ±â
-	while ((Row = mysql_fetch_row(Result)) != NULL)	// °á°ú Ãâ·ÂÇÏ±â
+	Result = mysql_store_result(ConnPtr);			// ê²°ê³¼ í™•ì¸í•˜ê¸°
+	while ((Row = mysql_fetch_row(Result)) != NULL)		// ê²°ê³¼ ì¶œë ¥í•˜ê¸°
 	{
 		std::cout << Row[0] << ' ' << Row[1] << ' ' << Row[2] << ' ' << Row[3] << ' ' << Row[4] <<  '\n';
 	}
-	mysql_free_result(Result);						// °á°ú ºñ¿ì±â
+	mysql_free_result(Result);				// ê²°ê³¼ ë¹„ìš°ê¸°
 
-	// µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°áÇØÁ¦
+	// ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°í•´ì œ
 	mysql_close(ConnPtr);
 
 	return 0;
