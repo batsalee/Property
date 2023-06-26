@@ -1,12 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void solve()
+{
+	
+}
+
 int main()
 {
-	std::ios::sync_with_stdio(false);
-	std::cin.tie(NULL);
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
 
-
+	solve();
 
 	return 0;
 }
