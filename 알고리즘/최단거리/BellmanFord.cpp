@@ -27,7 +27,7 @@ std::vector<int> distance;
 void Bellman_Ford(int nov)
 {
 	distance[1] = 0;
-	for (int i = 1; i <= nov - 1; i++)
+	for (int i = 0; i < nov - 1; i++) // (vertex의 갯수 - 1)회 반복
 	{
 		for (int j = 0; j < edges.size(); j++)
 		{
