@@ -7,3 +7,6 @@ bool타입을 가진다.
 */
 
 while (!cin.eof()) {}
+
+// 문장이라면
+while (getline(cin, input)) {}
