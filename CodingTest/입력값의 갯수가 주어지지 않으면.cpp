@@ -6,7 +6,5 @@ bool타입을 가진다.
 콘솔 창에서는 EOF를 수동으로 넣어주어야 한다. 이때, 윈도우 기준 ctrl+z가 EOF를 의미한다.
 */
 
-while (!cin.eof()) {}
-
-// 문장이라면
-while (getline(cin, input)) {}
+while (!cin.eof()) {} // 문자라면
+while (getline(cin, input)) {} // 문장이라면
