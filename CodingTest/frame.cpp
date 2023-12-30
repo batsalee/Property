@@ -1,9 +1,29 @@
+/* frame 1
+
+#include <bits/stdc++.h>
+#define sync ios::sync_with_stdio(false);cin.tie(NULL)
+using namespace std;
+
+int main()
+{
+	sync;
+
+
+
+	return 0;
+}
+
+*/
+
+
+/* frame 2
+
 #include <bits/stdc++.h>
 using namespace std;
 
 void solve()
 {
-	
+
 }
 
 int main()
@@ -15,3 +35,5 @@ int main()
 
 	return 0;
 }
+
+*/
