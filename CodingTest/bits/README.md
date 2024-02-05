@@ -5,8 +5,8 @@
 4) 프로젝트 속성페이지 -> C/C++ -> 명령줄 -> 추가옵션에 /Zc:__cplusplus추가
 5) 프로젝트 속성페이지 -> 구성 속성 -> 일반 -> C++ 언어 표준 원하는 버전으로 변경(예 : C++20)
 
-대략적으로 경로는 아래와 같음
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include
+visual studio 설치경로는 대략 아래와 같음
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include
 
 그 후 사용할때
 #include <bits/stdc++.h> 추가하고 사용
