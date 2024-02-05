@@ -2,6 +2,8 @@
 1) stdc++.h 파일 만들기
 2) visual studio가 설치된 폴더의 헤더파일들이 있는곳에 bits 폴더 만들기
 3) bits 폴더 안에 stdc++.h 파일 넣기
+4) 프로젝트 속성페이지 -> C/C++ -> 명령줄 -> 추가옵션에 /Zc:__cplusplus추가
+5) 프로젝트 속성페이지 -> 구성 속성 -> 일반 -> C++ 언어 표준 원하는 버전으로 변경(예 : C++20)
 
 대략적으로 경로는 아래와 같음
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include
